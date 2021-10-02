@@ -1,4 +1,4 @@
-# gomoku
+# Gomoku CSCI 130 Project
 
 ## Wireframe and UML Diagrams
 
