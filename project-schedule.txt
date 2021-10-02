@@ -1,5 +1,8 @@
-09/27/21 - 10/2/21 Week 1
+09/27/21 - 10/02/21 Week 1
 Juan: Created GitHub Repo and Project Board
-Israel: Helped plan the project structure
+Both: Plan the project structure
 
-
+10/04/21 - 10/08/21 Week 2
+Juan: Build UML Diagrams
+Israel: Build the wireframe
+Both: Research project scope
