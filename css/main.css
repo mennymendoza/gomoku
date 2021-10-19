@@ -1,0 +1,33 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com');
+@import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
+
+/* Colors */
+:root {
+    --mainBlue: #3A506B;
+}
+
+
+html * {
+    padding: 0;
+    margin: 0;
+    font-family: 'Georama', sans-serif;
+}
+
+header {
+    background-color: var(--mainBlue);
+    color: white;
+    width: 100%;
+    height: 80px;
+}
+
+footer {
+    background-color: var(--mainBlue);
+    color: white;
+    padding: 25px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
