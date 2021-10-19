@@ -6,3 +6,6 @@ Both: Plan the project structure
 Juan: Build UML Diagrams
 Israel: Build the wireframe
 Both: Research project scope
+
+10/18/21 - 10/22/21 Week 4
+Both: Organized file structure
