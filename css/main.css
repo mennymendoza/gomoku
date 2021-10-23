@@ -1,6 +1,4 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com');
-@import url('https://fonts.gstatic.com');
 @import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
 
 /* Colors */
@@ -30,4 +28,21 @@ footer {
     position: absolute;
     bottom: 0;
     text-align: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0px;
+}
+
+#form-box {
+    display: block;
+    border-radius: 20px;
+    background-color: #D69599;
+    padding: 40px 50px 20px 50px;
+    margin-bottom: 20px;
+    border: 1px solid #000;
 }
