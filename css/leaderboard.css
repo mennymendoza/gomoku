@@ -1,11 +1,3 @@
-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 0px;
-}
-
 #leaderboard {
     min-height: 350px;
     min-width: 350px;

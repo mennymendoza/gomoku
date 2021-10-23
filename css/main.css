@@ -32,6 +32,14 @@ footer {
     text-align: center;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0px;
+}
+
 #form-box {
     display: block;
     border-radius: 20px;
