@@ -1,0 +1,43 @@
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0px;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+#board {
+    height: 300px;
+    width: 300px;
+    background-color: #86a3d7;
+    margin-bottom: 20px;
+}
+
+#player-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 230px;
+}
+
+.circle {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    margin: 0px 3px;
+}
+
+#circle-1, #circle-3 {
+    background-color: #03ff47;
+}
+
+#circle-2 {
+    background-color: #f00;
+}
