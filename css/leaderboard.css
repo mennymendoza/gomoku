@@ -1,0 +1,56 @@
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0px;
+}
+
+#leaderboard {
+    min-height: 350px;
+    min-width: 350px;
+    border: 1px solid #000;
+    margin-bottom: 60px;
+    border-radius: 5px;
+}
+
+#player-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 750px;
+    align-items: center;
+    background-color: #d6d6d6;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.stats-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#wl-record {
+    text-align: center;
+    margin: 0px 40px;
+}
+
+#games-played, #hours-played {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+}
+
+#games-played {
+    background-color: #e28413;
+}
+
+#hours-played {
+    background-color: #7692ff;
+}
+
+caption {
+    text-align: left;
+}
