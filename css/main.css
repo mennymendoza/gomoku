@@ -1,6 +1,4 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com');
-@import url('https://fonts.gstatic.com');
 @import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
 
 /* Colors */
@@ -19,25 +17,27 @@ header {
     background-color: var(--mainBlue);
     color: white;
     width: 100%;
-    height: 80px;
+    height: 5vh;
 }
 
 footer {
     background-color: var(--mainBlue);
     color: white;
     padding: 25px;
+    padding: 25px 0;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    height: 5vh;
+    /* position: fixed;
+    bottom: 0; */
     text-align: center;
 }
 
 section {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 0px;
 }
 
 #form-box {
@@ -47,4 +47,10 @@ section {
     padding: 40px 50px 20px 50px;
     margin-bottom: 20px;
     border: 1px solid #000;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 30px;
+    font-weight: 100;
 }
