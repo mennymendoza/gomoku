@@ -1,32 +1,22 @@
-/* WHOLE PAGE  */
-#center {
-    text-align: center;
-    padding: 50px 10% 50px 10%;
-    overflow-y: scroll;
-}
-#center h1,h2 {
-    text-decoration: underline;
-    text-decoration-color: #AD2831;
-    text-decoration-thickness: 5px;
-    margin-bottom: 40px;
-}
-
 /* CONTACT  */
 #contact {
-    margin-bottom: 50px;
+    width: 65%;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: larger;
 }
 
 /* TOOLS  */
 #tech {
-    padding: 0 30% 0 30%;
+    width: 40%;
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 /* MEET THE TEAM  */
 #team {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     padding: 0 15%;
     display: flex;
     justify-content: space-evenly;
@@ -36,29 +26,24 @@
     border: 2px solid #a5a5a5;
     border-radius: 10px;
     padding: 20px 70px;
+    text-align: center;
+}
+.card h3 {
+    color: #3A506B;
 }
 .card h4 {
     margin: 10px 0;
+    color: #212f41;
 }
 .card p {
     margin: 15px 0;
-    color: #707070;
 }
 #cardSocial {
-    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
-/* BUTTONS */
-.prjctBtn {
-    /* display: block; */
-    font-weight: bolder;
-    font-size: large;
-    background-color: #e6e6e6;
-    width: 150px;
-    height: 50px;
-    border-radius: 40px;
-    border: 0px;
-    padding: 10px;
+/* BUTTON IMAGES */
+button img {
+    margin-right: 5px;
 }
