@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     margin-bottom: 25px;
     font-size: 30px;
@@ -32,4 +37,15 @@ h1 {
 
 #circle-2 {
     background-color: #f00;
+}
+
+table {
+    height: 100%;
+    width: 100%;
+    border-spacing: 0;
+}
+
+td {
+    border: 1px solid #000;
+    border-collapse: collapse;
 }
