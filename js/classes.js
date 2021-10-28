@@ -5,7 +5,7 @@
 class Game {
     constructor(boardSize) {
         this.numberOfTurns = 0;
-        this.playerTurn = 1;
+        this.playerTurn = 0;
         this.size = boardSize;
         this.currentPlayer;
         this.boardArray = new Array();
@@ -17,7 +17,7 @@ class Game {
             html += "<tr>";
             for (let j = 0; j < this.size; j++) {
                 html += "<td id='tile-" + cellIndex.toString() + "' onclick='game.updateTable(id)'></td>";
-                this.boardArray.push(new Tile(cellIndex, i, j));
+                this.boardArray.push(new Tile(cellIndex, j, i));
                 cellIndex++;
             }
             html += "</tr>";
@@ -70,19 +70,160 @@ class Game {
 
     // Checks to see if the current player has won.
     playerWins(cellIndex) {
-        let wins = true;
-        // Checks for bottom right diagonal wins
+        let x = this.boardArray[cellIndex].xIndex;
+        let y = this.boardArray[cellIndex].yIndex;
+        let pieceCounter = 0;
+        // Checks for win (north)
         for (let i = 0; i < 5; i++) {
-            let nextIndex = this.getIndex(cellIndex + i, cellIndex + j)
-            if (nextIndex >= this.size || nextIndex < 0) {
+            let newY = y - i;
+            let nextIndex = this.getIndex(x, newY);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newY >= this.size || newY < 0) {
                 break;
             }
-            if (this.boardArray[nextIndex] != this.currentPlayer) {
-                wins = false;
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
             }
         }
-        return wins;
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (south)
+        for (let i = 0; i < 5; i++) {
+            let newY = y + i;
+            let nextIndex = this.getIndex(x, newY);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newY >= this.size || newY < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (east)
+        for (let i = 0; i < 5; i++) {
+            let newX = x + i;
+            let nextIndex = this.getIndex(newX, y);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newX < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (west)
+        for (let i = 0; i < 5; i++) {
+            let newX = x - i;
+            let nextIndex = this.getIndex(newX, y);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newX < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (south east diagonol)
+        for (let i = 0; i < 5; i++) {
+            let newX = x + i;
+            let newY = y + i;
+            let nextIndex = this.getIndex(newX, newY);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (north east diagonol)
+        for (let i = 0; i < 5; i++) {
+            let newX = x + i;
+            let newY = y - i;
+            let nextIndex = this.getIndex(newX, newY);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (north west diagonol)
+        for (let i = 0; i < 5; i++) {
+            let newX = x - i;
+            let newY = y - i;
+            let nextIndex = this.getIndex(newX, newY);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        // Checks for win (south west diagonol)
+        for (let i = 0; i < 5; i++) {
+            let newX = x - i;
+            let newY = y + i;
+            let nextIndex = this.getIndex(newX, newY);
+            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
+                break;
+            }
+            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+                pieceCounter++;
+            }
+        }
+        if (pieceCounter === 5) {
+            return true;
+        }
+        else {
+            pieceCounter = 0;
+        }
+
+        return false;
     }
+    
     // Given a cellId, returns an array containing x and y coordinates.
     getIndex(x, y) {
         return this.size * y + x;
