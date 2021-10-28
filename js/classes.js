@@ -7,17 +7,24 @@ class Game {
         this.numberOfTurns = 0;
         this.playerTurn = 1;
         this.size = boardSize;
-        this.board = []
+        this.boardArray = new Array();
 
+        // Constucts board array and creates HTML table to represent board.
         let html = ""
+        let cellIndex = 0;
         for (let i = 0; i < this.size; i++) {
+            let row = []
             html += "<tr>"
             for (let j = 0; j < this.size; j++) {
-                html += "<td></td>"
+                html += "<td id='tile-" + cellIndex.toString() + "' onclick='game.updateTable(id)'></td>"
+                row.push(new Tile(cellIndex, i, j));
+                cellIndex++;
             }
+            this.boardArray.push(row);
             html += "</tr>"
             document.querySelector("#board table").innerHTML = html;
         }
+        console.log(this.boardArray);
     }
 
     // Updates the board when the player clicks on a cell.
@@ -35,8 +42,8 @@ class Game {
 }
 
 class Tile {
-    constructor(cellId, x, y) {
-        this.id = cellId;
+    constructor(cellIndex, x, y) {
+        this.index = cellIndex;
         this.xIndex = x;
         this.yIndex = y;
         this.empty = true;
