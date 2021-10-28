@@ -40,7 +40,7 @@ class Game {
             this.boardArray[cellIndex].playerOwned = currentPlayer;
             
             // checks if player won
-            if (this.playerWins()) {
+            if (this.playerWins(cellIndex)) {
                 alert("Player " + currentPlayer.toString() + " wins!");
                 return;
             }
@@ -71,7 +71,7 @@ class Game {
     }
 
     // Checks to see if the current player has won.
-    playerWins() {
+    playerWins(cellIndex) {
         return false;
     }
     // Given a cellId, returns an array containing x and y coordinates.
