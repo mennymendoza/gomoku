@@ -36,7 +36,25 @@ else {
 
 # Runs a query to create a database
 $query_success = $conn->query("CREATE TABLE games (
-    pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY
+    pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    player_key INT(6) NOT NULL,
+    score INT(10) NOT NULL,
+    duration INT(20) NOT NULL,
+    number_of_turns INT(10) NOT NULL
+    )");
+
+if ($query_success) {
+    echo "Query successful.<br />";
+}
+else {
+    echo "Query failed. " . $conn->error . "<br />";
+}
+
+# Runs a query to create a database
+$query_success = $conn->query("CREATE TABLE players (
+    pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    usernm VARCHAR(30),
+    passwd VARCHAR(30)
     )");
 
 if ($query_success) {
