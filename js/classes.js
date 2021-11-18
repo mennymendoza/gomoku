@@ -42,7 +42,7 @@ class Game {
             
             // checks if player won
             if (this.playerWins(cellIndex)) {
-                alert("Player " + this.currentPlayer.toString() + " wins!");
+                this.endGame();
                 return;
             }
 
@@ -73,6 +73,7 @@ class Game {
         let x = this.boardArray[cellIndex].xIndex;
         let y = this.boardArray[cellIndex].yIndex;
         let pieceCounter = 0;
+
         // Checks for win (north)
         for (let i = 0; i < 5; i++) {
             let newY = y - i;
@@ -83,6 +84,9 @@ class Game {
             if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
                 pieceCounter++;
             }
+        }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
@@ -102,6 +106,9 @@ class Game {
                 pieceCounter++;
             }
         }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+        }
         if (pieceCounter === 5) {
             return true;
         }
@@ -120,6 +127,9 @@ class Game {
                 pieceCounter++;
             }
         }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+        }
         if (pieceCounter === 5) {
             return true;
         }
@@ -137,6 +147,9 @@ class Game {
             if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
                 pieceCounter++;
             }
+        }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
@@ -157,6 +170,9 @@ class Game {
                 pieceCounter++;
             }
         }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+        }
         if (pieceCounter === 5) {
             return true;
         }
@@ -175,6 +191,9 @@ class Game {
             if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
                 pieceCounter++;
             }
+        }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
@@ -195,6 +214,9 @@ class Game {
                 pieceCounter++;
             }
         }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+        }
         if (pieceCounter === 5) {
             return true;
         }
@@ -214,6 +236,9 @@ class Game {
                 pieceCounter++;
             }
         }
+        if (pieceCounter === 3 || pieceCounter === 4) {
+            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+        }
         if (pieceCounter === 5) {
             return true;
         }
@@ -227,6 +252,11 @@ class Game {
     // Given a cellId, returns an array containing x and y coordinates.
     getIndex(x, y) {
         return this.size * y + x;
+    }
+
+    // Does whatever needs to happen when the game ends
+    endGame() {
+        alert("Player " + this.currentPlayer.toString() + " wins!");
     }
 }
 
