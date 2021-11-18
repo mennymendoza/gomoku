@@ -23,4 +23,30 @@ else {
 # Closes connection
 $conn->close();
 
+
+# Connects to mysql database
+$conn = new mysqli("localhost", "juan", "password", "gomoku");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error . "<br />");
+}
+else {
+    echo "Connected successfully.<br />";
+}
+
+# Runs a query to create a database
+$query_success = $conn->query("CREATE TABLE games (
+    pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY
+    )");
+
+if ($query_success) {
+    echo "Query successful.<br />";
+}
+else {
+    echo "Query failed. " . $conn->error . "<br />";
+}
+
+# Closes connection
+$conn->close();
+
 ?>
