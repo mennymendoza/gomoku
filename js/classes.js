@@ -72,18 +72,17 @@ class Game {
     playerWins(cellIndex) {
         let x = this.boardArray[cellIndex].xIndex;
         let y = this.boardArray[cellIndex].yIndex;
+        let origIndex = this.getIndex(x, y);
+        
         let pieceCounter = 0;
-
+        let nextX = x;
+        let nextY = y;
+        let nextIndex = origIndex;
         // Checks for win (north)
-        for (let i = 0; i < 5; i++) {
-            let newY = y - i;
-            let nextIndex = this.getIndex(x, newY);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newY >= this.size || newY < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextY--;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
@@ -91,20 +90,16 @@ class Game {
         if (pieceCounter === 5) {
             return true;
         }
-        else {
-            pieceCounter = 0;
-        }
 
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
         // Checks for win (south)
-        for (let i = 0; i < 5; i++) {
-            let newY = y + i;
-            let nextIndex = this.getIndex(x, newY);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newY >= this.size || newY < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextY++;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
@@ -112,20 +107,16 @@ class Game {
         if (pieceCounter === 5) {
             return true;
         }
-        else {
-            pieceCounter = 0;
-        }
 
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
         // Checks for win (east)
-        for (let i = 0; i < 5; i++) {
-            let newX = x + i;
-            let nextIndex = this.getIndex(newX, y);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newX < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextX++;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
@@ -133,117 +124,94 @@ class Game {
         if (pieceCounter === 5) {
             return true;
         }
-        else {
-            pieceCounter = 0;
-        }
 
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
         // Checks for win (west)
-        for (let i = 0; i < 5; i++) {
-            let newX = x - i;
-            let nextIndex = this.getIndex(newX, y);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newX < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextX--;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
-        }
-        else {
-            pieceCounter = 0;
         }
 
-        // Checks for win (south east diagonol)
-        for (let i = 0; i < 5; i++) {
-            let newX = x + i;
-            let newY = y + i;
-            let nextIndex = this.getIndex(newX, newY);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
+        // Checks for win (south east diagonal)
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextX++;
+            nextY++;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
-        }
-        else {
-            pieceCounter = 0;
         }
 
-        // Checks for win (north east diagonol)
-        for (let i = 0; i < 5; i++) {
-            let newX = x + i;
-            let newY = y - i;
-            let nextIndex = this.getIndex(newX, newY);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
+        // Checks for win (north east diagonal)
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextX++;
+            nextY--;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
-        }
-        else {
-            pieceCounter = 0;
         }
 
-        // Checks for win (north west diagonol)
-        for (let i = 0; i < 5; i++) {
-            let newX = x - i;
-            let newY = y - i;
-            let nextIndex = this.getIndex(newX, newY);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
+        // Checks for win (north west diagonal)
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextX--;
+            nextY--;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
-        }
-        else {
-            pieceCounter = 0;
         }
 
-        // Checks for win (south west diagonol)
-        for (let i = 0; i < 5; i++) {
-            let newX = x - i;
-            let newY = y + i;
-            let nextIndex = this.getIndex(newX, newY);
-            if (nextIndex >= this.boardArray.length || nextIndex < 0 || newX >= this.size || newY >= this.size || newX < 0 || newY < 0) {
-                break;
-            }
-            if (!this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
-                pieceCounter++;
-            }
+        pieceCounter = 0;
+        nextX = x;
+        nextY = y;
+        nextIndex = origIndex;
+        // Checks for win (south west diagonal)
+        while (nextX >= 0 && nextX < this.size && nextY >= 0 && nextY < this.size && !this.boardArray[nextIndex].empty && this.boardArray[nextIndex].playerOwned == this.currentPlayer) {
+            pieceCounter++;
+            nextX--;
+            nextY++;
+            nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
         }
         if (pieceCounter === 5) {
             return true;
-        }
-        else {
-            pieceCounter = 0;
         }
 
         return false;
