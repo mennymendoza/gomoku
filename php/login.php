@@ -26,7 +26,13 @@ if ($result) {
         echo "Could not find anyone with that login.";
     }
     else {
-        echo "We found you!";
+        $row = $result->fetch_assoc();
+        if ($row["passwd"] == $pass) {
+            echo "Correct password C:";
+        }
+        else {
+            echo "That's not the correct password, you sneaky fuck.";
+        }
     }
 } else {
     echo "Oops, something went wrong on our end. Sorry!";
