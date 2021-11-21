@@ -11,7 +11,7 @@ if (isset($_POST["pass"])) {
     $pass = $_POST["pass"];
 }
 else {
-    die("No username found.");
+    die("No password found.");
 }
 
 // boilerplate mysql api code

@@ -37,7 +37,7 @@ else {
 # Runs a query to create a database
 $query_success = $conn->query("CREATE TABLE games (
     pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    player_key INT(6) NOT NULL,
+    player_name VARCHAR(30) NOT NULL,
     score INT(10) NOT NULL,
     duration INT(20) NOT NULL,
     number_of_turns INT(10) NOT NULL

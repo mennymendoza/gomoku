@@ -5,7 +5,6 @@
 class Game {
     constructor(boardSize) {
         this.numberOfTurns = 0;
-        this.playerTurn = 0;
         this.size = boardSize;
         this.currentPlayer;
         this.boardArray = new Array();
@@ -32,7 +31,7 @@ class Game {
         let cellIndex = parseInt(cellId.substring(5));
         
         // Set global variable to id of current player (0 or 1)
-        this.currentPlayer = this.playerTurn % 2;
+        this.currentPlayer = this.numberOfTurns % 2;
 
         if (this.boardArray[cellIndex].empty) {
             // if the board is empty
@@ -47,7 +46,7 @@ class Game {
             }
 
             // increments turn
-            this.playerTurn++;
+            this.numberOfTurns++;
         }
         else {
             alert("Idiot! That cell has been clicked already!");
@@ -225,6 +224,13 @@ class Game {
     // Does whatever needs to happen when the game ends
     endGame() {
         alert("Player " + this.currentPlayer.toString() + " wins!");
+        const xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            console.log(xhr.response);
+        }
+        xhr.open("POST", "../../php/save_game.php");
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhr.send("score=0&duration=100&num_turns=" + this.numberOfTurns);
     }
 }
 
