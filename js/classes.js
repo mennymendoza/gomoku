@@ -4,10 +4,15 @@
 
 class Game {
     constructor(boardSize) {
+        // Properties
         this.numberOfTurns = 0;
         this.size = boardSize;
         this.currentPlayer;
         this.boardArray = new Array();
+        
+        // Sets time and date properties for calculating duration
+        const date = new Date();
+        this.startTime = date.getTime();
 
         // Constucts board array and creates HTML table to represent board.
         let html = "";
@@ -226,13 +231,16 @@ class Game {
     // Does whatever needs to happen when the game ends
     endGame() {
         alert("Player " + this.currentPlayer.toString() + " wins!");
+        const date = new Date();
+        const duration = (date.getTime() - this.startTime) / 1000;
+        console.log(duration);
         const xhr = new XMLHttpRequest();
         xhr.onload = () => {
             console.log(xhr.response);
         }
         xhr.open("POST", "../../php/save_game.php");
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-        xhr.send("score=0&duration=100&num_turns=" + this.numberOfTurns);
+        xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}`);
     }
 }
 

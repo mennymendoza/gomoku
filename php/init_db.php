@@ -39,7 +39,7 @@ $query_success = $conn->query("CREATE TABLE games (
     pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     player_name VARCHAR(30) NOT NULL,
     score INT(10) NOT NULL,
-    duration INT(20) NOT NULL,
+    duration FLOAT(20, 3) NOT NULL,
     number_of_turns INT(10) NOT NULL
     )");
 
