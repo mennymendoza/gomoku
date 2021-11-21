@@ -33,14 +33,16 @@ class Game {
         // Set global variable to id of current player (0 or 1)
         this.currentPlayer = this.numberOfTurns % 2;
 
+        // if the board is empty
         if (this.boardArray[cellIndex].empty) {
-            // if the board is empty
+
             this.decorateCell(cellId);
             this.boardArray[cellIndex].empty = false;
             this.boardArray[cellIndex].playerOwned = this.currentPlayer;
-            
+
             // checks if player won
             if (this.playerWins(cellIndex)) {
+                this.numberOfTurns++;
                 this.endGame();
                 return;
             }
