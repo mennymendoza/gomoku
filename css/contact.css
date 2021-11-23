@@ -1,30 +1,45 @@
 /* CONTACT  */
 #contact {
-    width: 65%;
+    width: 60vw;
     text-align: center;
     margin-bottom: 25px;
-    font-size: larger;
+    font-size: large;
 }
 
 /* TOOLS  */
 #tech {
-    width: 40%;
+    width: 60vw;
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 25px;
+    padding: 30px;
+}
+.tech-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tech-card .fab {
+    font-size: 60px;
+}
+.tech-card i {
+    margin-right: 10px;
+    border-right: 1px solid black;
+    padding: 10px;
 }
 
 /* MEET THE TEAM  */
 #team {
     margin-bottom: 25px;
-    padding: 0 15%;
+    width: 60vw;
     display: flex;
     justify-content: space-evenly;
 }
 .card {
     width: 25%;
-    border: 2px solid #a5a5a5;
-    border-radius: 10px;
+    border: 0;
+    /* border-radius: 10px; */
+    box-shadow: 10px 9px 61px -3px rgba(0,0,0,0.33);
     padding: 20px 70px;
     text-align: center;
 }
@@ -42,8 +57,37 @@
     display: flex;
     justify-content: space-evenly;
 }
+.fab {
+    font-size: 30px;
+    color: #73A6AD;
+}
+.fab:hover {
+    color: var(--mainBlue);
+}
 
-/* BUTTON IMAGES */
-button img {
-    margin-right: 5px;
+/* BUTTONS */
+.btn .fab, .far {
+    color: #73A6AD;
+    font-size: 27.5px;
+    margin-right: 10px;
+}
+.btn:hover>i {
+    color:white;
+}
+
+@media only screen and (max-width: 768px) {
+    #team {
+        margin-bottom: 25px;
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .card {
+        width: 50%;
+        margin-bottom: 15px;
+        padding: 20px 70px;
+        text-align: center;
+    }
 }
