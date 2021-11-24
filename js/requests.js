@@ -7,6 +7,9 @@ const login = () => {
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
         console.log(xhr.response);
+        if (xhr.response == 'correct') {
+            window.location.replace("../game/index.html");
+        }
     }
     xhr.open("POST", "../../php/login.php");
     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -42,12 +45,24 @@ const getGames = () => {
     xhr.send();
 }
 
-const checkLogin = () => {
+const checkSession = () => {
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
         console.log("Login check response: " + xhr.response);
         if (!xhr.response) {
             window.location.replace('../login/index.html');
+        }
+    }
+    xhr.open("GET", "../../php/check_login.php");
+    xhr.send();
+}
+
+const checkLogin = () => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+        console.log("Already logged in: " + xhr.response);
+        if (xhr.response) {
+            window.location.replace('../game/index.html');
         }
     }
     xhr.open("GET", "../../php/check_login.php");

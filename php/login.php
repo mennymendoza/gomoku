@@ -31,7 +31,7 @@ if ($result) {
     else {
         $row = $result->fetch_assoc();
         if ($row["passwd"] == $pass) {
-            echo "Correct password C:";
+            echo "correct";
             $_SESSION['valid'] = true;
         }
         else {
