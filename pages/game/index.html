@@ -7,7 +7,7 @@
         <link href="../../css/main.css" rel="stylesheet" type="text/css" />
         <link href="../../css/game.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body onload='checkLogin()'>
         <!-- header goes here -->
         <nav>
             <ul>
@@ -38,6 +38,7 @@
             <input type='button' onclick='restartGame()' value='Restart'/>
         </section>
         <!-- footer goes here -->
+        <script src='../../js/requests.js'></script>
         <script src="../../js/classes.js"></script>
         <script src="../../js/game.js"></script>
     </body>

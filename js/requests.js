@@ -41,3 +41,15 @@ const getGames = () => {
     xhr.open("GET", "../../php/get_games.php");
     xhr.send();
 }
+
+const checkLogin = () => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+        console.log("Login check response: " + xhr.response);
+        if (!xhr.response) {
+            window.location.replace('../login/index.html');
+        }
+    }
+    xhr.open("GET", "../../php/check_login.php");
+    xhr.send();
+}

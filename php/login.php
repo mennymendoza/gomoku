@@ -1,5 +1,8 @@
 <?php 
 
+session_start();
+$_SESSION['valid'] = false;
+
 if (isset($_POST["user"])) {
     $user = $_POST["user"];
 }
@@ -29,6 +32,7 @@ if ($result) {
         $row = $result->fetch_assoc();
         if ($row["passwd"] == $pass) {
             echo "Correct password C:";
+            $_SESSION['valid'] = true;
         }
         else {
             echo "That's not the correct password, you sneaky fuck.";
