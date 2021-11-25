@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 if (isset($_POST["score"])) {
     $score = $_POST["score"];
 }
@@ -28,11 +30,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$query_success = $conn->query("INSERT INTO games (player_name, score, duration, number_of_turns) VALUES ('johnny', '${score}', '${duration}', '${num_turns}')");
+$query_success = $conn->query("INSERT INTO games (player_name, score, duration, number_of_turns) VALUES ('{$_SESSION['user']}', '${score}', '${duration}', '${num_turns}')");
 if ($query_success) {
     echo "Game submission successful.";
 } else {
     echo "Hmmm... something went wrong on our end. Sorry!";
+    echo $conn->error;
 }
 
 

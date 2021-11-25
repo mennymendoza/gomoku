@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 # Class initialization
 class Game {
     public $player_name;
@@ -14,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error ."<br>");
 }
 
-$result = $conn->query("SELECT * FROM games");
+$result = $conn->query("SELECT * FROM games WHERE player_name='{$_SESSION['user']}'");
 $response = array();
 
 while ($row = $result->fetch_assoc()) {

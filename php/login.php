@@ -33,6 +33,7 @@ if ($result) {
         if ($row["passwd"] == $pass) {
             echo "correct";
             $_SESSION['valid'] = true;
+            $_SESSION['user'] = $user;
         }
         else {
             echo "That's not the correct password, you sneaky fuck.";
