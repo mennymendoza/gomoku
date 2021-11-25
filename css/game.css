@@ -49,3 +49,49 @@ td {
     border: 1px solid #000;
     border-collapse: collapse;
 }
+
+@keyframes flash {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+/* CONSOLE */
+#console-bar {
+    margin-top: 20px;
+    background-color: #e6e6e6;
+    width: 800px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    color: var(--mainBlue);
+    font-family: monospace;
+    font-size: 20px;
+}
+#console {
+    background-color: var(--mainBlue);
+    width: 800px;
+    height: 100px;
+    border-radius: 5px;
+    display: flex;
+    padding: 5px;
+}
+#console p {
+    font-family: monospace;
+    font-size: 17px;
+}
+#console-tag {
+    color: #F17105;
+}
+#console-alert {
+    margin: 0 4px 0 4px;
+    color: #1EFC1E;
+}
+#console-cursor {
+    width: 8px;
+    height: 20px;
+    background-color: #1EFC1E;
+    animation: flash 1s ease-in-out infinite;
+}

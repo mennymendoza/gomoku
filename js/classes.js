@@ -1,7 +1,7 @@
 // All classes used in the game
 
 "use strict";
-
+let consoleBox = document.querySelector('#console-alert')
 class Game {
     constructor(boardSize) {
         // Properties
@@ -56,7 +56,8 @@ class Game {
             this.numberOfTurns++;
         }
         else {
-            alert("Idiot! That cell has been clicked already!");
+            // alert("Idiot! That cell has been clicked already!");
+            consoleBox.innerHTML = "Idiot! That cell has been clicked already!"
             return;
         }
     }
