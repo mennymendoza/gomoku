@@ -16,6 +16,18 @@ const login = () => {
     xhr.send("user=" + username.value + "&pass=" + password.value);
 }
 
+const logout = () => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+        console.log(xhr.response);
+        if (xhr.response === "success") {
+            window.location.replace('../../index.html')
+        }
+    }
+    xhr.open("POST", "../../php/logout.php");
+    xhr.send();
+}
+
 const signup = () => {
     let username = document.getElementById("email-address");
     let password = document.getElementById("password");
