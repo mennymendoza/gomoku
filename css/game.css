@@ -10,7 +10,7 @@
     justify-content: center;
     text-align: center;
     /* padding-top: 100px; */
-    width: 500px;
+    width: 400px;
     height: 500px;
 }
 #timer-sect h1, h2, #display-sect h1, h2 {
@@ -21,7 +21,7 @@
 /* OPTIONS MENU */
 #options-menu {
     display: none;
-    width: 500px;
+    width: 400px;
     margin-top: 10px;
     border: 1px solid black;
     padding: 20px;
