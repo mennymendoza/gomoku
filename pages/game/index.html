@@ -8,7 +8,6 @@
         <link href="../../css/game.css" rel="stylesheet" type="text/css" />
     </head>
     <body onload='checkSession()'>
-        <!-- header goes here -->
         <nav>
             <ul>
                 <li><a href="../menu/index.html" class="logo"><img src="../../images/gomokuDiamond.png"></a></li>
@@ -21,40 +20,113 @@
         </nav>
         <section id="main-section">
             <h1>Gomoku</h1>
-            <div id="board">
-                <table>
-                    
-                </table>
-                <!-- board code would go here -->
-            </div>
-            <div id="player-status">
-                <p>Player 1</p>
-                <div>
-                    <div id="circle-1" class="circle"></div>
-                    <div id="circle-2" class="circle"></div>
-                    <div id="circle-3" class="circle"></div>
+            <div id="sect">
+                <div id="timer-sect">
+                    <h1>Timer</h1>
+                    <div>
+                        <h2>3:30</h2>
+                    </div>
+                    <div id="options-menu">
+                        <h3>Options Menu</h3>
+                        <hr>
+                        <form>
+                            <div>
+                                <label for="colors">Select a Background Color:</label>
+                                <select name="colors" id="colors">
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="red">Red</option>
+                                    <option value="yellow">Yellow</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="size">Select the size for the board:</label>
+                                <select name="size" id="size">
+                                    <option value="sixteen">16x16</option>
+                                    <option value="nineteen">19x19</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="color-p1">Color for P1:</label>
+                                <select name="color-p1" id="color-p1">
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="red">Red</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="color-p2">Color for P2:</label>
+                                <select name="color-p2" id="color-p2">
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="red">Red</option>
+                                </select>
+                            </div>
+
+                        </form>
+                        <div id="buttons">
+                            <button type="button" class="btn" id="close" onclick="closeButton()">Close</button>
+                            <button type="button" class="btn" onclick="restartGame()">Restart</button>
+                        </div>                       
+                    </div>
                 </div>
-                <p>Player 2</p>
+                <div id="board-sect">
+                    <div id="board">
+                        <table>
+                            
+                        </table>
+                        <!-- board code would go here -->
+                    </div>
+                    <div id="player-status">
+                        <p>Player 1</p>
+                        <div>
+                            <div id="circle-1" class="circle"></div>
+                            <div id="circle-2" class="circle"></div>
+                            <div id="circle-3" class="circle"></div>
+                        </div>
+                        <p>Player 2</p>
+                    </div>
+                </div>
+                <div id="display-sect">
+                    <h1>Display</h1>
+                    <div id="game-stats">
+                        <div>
+                            <h2>Player 1 Stats</h2>
+                            <table>
+                                <tr>
+                                    <th>3 in a row</th>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <th>4 in a row</th>
+                                    <td>2</td>
+                                    <td>1</td>
+                                </tr>
+                            </table>
+                            <h2>Player 2 Stats</h2>
+                            <table>
+                                <tr>
+                                    <th>3 in a row</th>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <th>4 in a row</th>
+                                    <td>2</td>
+                                    <td>1</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- <input type='button' onclick='restartGame()' value='Restart'/> -->
             <button type="button" class="btn" id="open" onclick="openButton()">Options</button>
-            <div id="options-menu">
-                <h4>Options Menu</h4>
-                <hr>
-                <form>
-                    <input type="checkbox">Green
-                    <input type="checkbox">Red
-                    <input type="checkbox">Blue
-                    <input type="checkbox">Black
-                </form>
-                <button type="button" class="btn" id="close" onclick="closeButton()">Close</button>
-                <button type="button" class="btn" onclick="restartGame()">Restart</button>
-            </div>
             <div id="console-bar">Gomoku Terminal</div>
             <div id="console">
                 <p id="console-tag">gomoku@csci130 ~ % </p>
                 <p id="console-alert">GOMOKU GAME</p>
-                <div id="console-cursor"></div>
+                <!-- <div id="console-cursor"></div> -->
             </div>
         </section>
         <footer>
@@ -62,7 +134,6 @@
             <h5>By</h5>
             <h4>Israel P. & John M.</h4>
         </footer>
-        <!-- footer goes here -->
         <script src='../../js/requests.js'></script>
         <script src="../../js/classes.js"></script>
         <script src="../../js/game.js"></script>
