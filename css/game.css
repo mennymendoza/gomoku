@@ -1,22 +1,61 @@
-* {
-    margin: 0;
-    padding: 0;
+/* SECTION STYLING */
+#sect {
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+}
+#timer-sect, #display-sect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    /* padding-top: 100px; */
+    width: 500px;
+    height: 500px;
+}
+#timer-sect h1, h2, #display-sect h1, h2 {
+    border: 0;
+    margin-bottom: 10px;
 }
 
+/* OPTIONS MENU */
+#options-menu {
+    display: none;
+    width: 500px;
+    margin-top: 10px;
+    border: 1px solid black;
+    padding: 20px;
+}
+#options-menu form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+#options-menu .btn {
+    font-size: large;
+    width: 175px;
+    height: 40px;
+}
+
+/* GAME BOARD */
 #board {
-    height: 300px;
-    width: 300px;
+    height: 500px;
+    width: 500px;
     background-color: #86a3d7;
     margin-bottom: 20px;
 }
-
 #player-status {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    width: 230px;
+    width: 500px;
 }
-
 .circle {
     display: inline-block;
     height: 10px;
@@ -24,26 +63,41 @@
     border-radius: 10px;
     margin: 0px 3px;
 }
-
 #circle-1, #circle-3 {
     background-color: #03ff47;
 }
-
 #circle-2 {
     background-color: #f00;
 }
-
 table {
     height: 100%;
     width: 100%;
     border-spacing: 0;
 }
-
 td {
     border: 1px solid #000;
     border-collapse: collapse;
 }
 
+/* DISPLAY GAME STATS */
+#game-stats table {
+    margin-bottom: 20px;
+}
+#game-stats th {
+    background: var(--mainBlue);
+    border: 1px solid var(--gray);
+    color: var(--gray);
+    width: 60px;
+}
+#game-stats td {
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid var(--gray);
+    text-align: center;
+    color: var(--mainBlue);
+}
+
+/* CONSOLE */
 @keyframes flash {
     0% {
       opacity: 0;
@@ -52,36 +106,36 @@ td {
       opacity: 1;
     }
 }
-/* CONSOLE */
 #console-bar {
     margin-top: 20px;
-    background-color: #e6e6e6;
+    background-color: #F4F4F6;
     width: 800px;
     border-radius: 5px;
     text-align: center;
     padding: 5px;
     color: var(--mainBlue);
     font-family: monospace;
-    font-size: 20px;
+    font-size: 15px;
 }
 #console {
-    background-color: var(--mainBlue);
+    background-color: var(--gray);
     width: 800px;
     height: 100px;
     border-radius: 5px;
-    display: flex;
     padding: 5px;
 }
 #console p {
     font-family: monospace;
-    font-size: 17px;
+    font-size: 15px;
 }
 #console-tag {
-    color: #F17105;
+    color: #fcb186;
+    display: inline-block;
 }
 #console-alert {
     margin: 0 4px 0 4px;
-    color: #1EFC1E;
+    color: var(--mainBlue);
+    display: inline-block;
 }
 #console-cursor {
     width: 8px;

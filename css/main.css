@@ -4,6 +4,8 @@
 /* Colors */
 :root {
     --mainBlue: #3A506B;
+    --gray: #e6e6e6;
+    --orange: #ffc8a9;
 }
 
 html * {
