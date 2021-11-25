@@ -16,6 +16,7 @@
                 <li><a href="../leaderboard/index.html">Leaderboard</a></li>
                 <li><a href="../help/index.html">Help</a></li>
                 <li><a href="../contact/index.html">Contact</a></li>
+                <li><a href="../../index.html">Logout</a></li>
             </ul>  
         </nav>
         <section id="main-section">
@@ -35,8 +36,20 @@
                 </div>
                 <p>Player 2</p>
             </div>
-            <input type='button' onclick='restartGame()' value='Restart'/>
+            <!-- <input type='button' onclick='restartGame()' value='Restart'/> -->
+            <button type="button" class="btn" onclick="restartGame()">Restart</button>
+            <div id="console-bar">Gomoku Terminal</div>
+            <div id="console">
+                <p id="console-tag">gomoku@csci130 ~ % </p>
+                <p id="console-alert">GOMOKU GAME</p>
+                <div id="console-cursor"></div>
+            </div>
         </section>
+        <footer>
+            <h4>Designed & Developed</h4>
+            <h5>By</h5>
+            <h4>Israel P. & John M.</h4>
+        </footer>
         <!-- footer goes here -->
         <script src="../../js/classes.js"></script>
         <script src="../../js/game.js"></script>
