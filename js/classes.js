@@ -57,7 +57,7 @@ class Game {
         }
         else {
             // alert("Idiot! That cell has been clicked already!");
-            consoleBox.innerHTML = "Idiot! That cell has been clicked already!"
+            consoleBox.innerHTML = "Idiot! That cell has been clicked already!";
             return;
         }
     }
@@ -92,7 +92,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row..."
         }
         if (pieceCounter === 5) {
             return true;
@@ -109,7 +110,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
@@ -126,7 +128,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
@@ -143,7 +146,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
@@ -161,7 +165,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
@@ -179,7 +184,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
@@ -197,7 +203,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
@@ -215,7 +222,8 @@ class Game {
             nextIndex = this.getIndex(nextX, nextY);
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
-            alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
         }
         if (pieceCounter === 5) {
             return true;
