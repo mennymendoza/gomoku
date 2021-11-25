@@ -8,6 +8,11 @@ const restartGame = () => {
     consoleBox.innerHTML = "GOMOKU GAME";
 }
 
+const toConsole = (msg) => {
+    const consoleBox = document.querySelector("#console-alert");
+    consoleBox.innerHTML = msg;
+}
+
 function openButton() {
     document.querySelector('#options-menu').style.display = "block"
 }

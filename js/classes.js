@@ -8,6 +8,8 @@ class Game {
         this.numberOfTurns = 0;
         this.size = boardSize;
         this.currentPlayer;
+        this.playerWins = [0, 0] // array, each element represents each player
+        this.gamesPlayed = 0;
         this.boardArray = new Array();
         
         // Sets time and date properties for calculating duration
@@ -67,7 +69,7 @@ class Game {
         let selectedCell = document.getElementById(cellId);
 
         // checks which player's turn it is and decorates accordingly
-        if (this.currentPlayer) {
+        if (!this.currentPlayer) {
             selectedCell.style.backgroundColor = "#000";
         }
         else {

@@ -54,7 +54,10 @@ else {
 $query_success = $conn->query("CREATE TABLE players (
     pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     usernm VARCHAR(30),
-    passwd VARCHAR(30)
+    passwd VARCHAR(30),
+    games_won INT(6),
+    time_played INT(10),
+    games_played INT(6)
     )");
 
 if ($query_success) {
