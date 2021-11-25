@@ -8,7 +8,7 @@ class Game {
         this.numberOfTurns = 0;
         this.size = boardSize;
         this.currentPlayer;
-        this.playerWins = [0, 0] // array, each element represents each player
+        this.numWins = [0, 0] // array, each element represents each player
         this.gamesPlayed = 0;
         this.boardArray = new Array();
         
@@ -269,6 +269,8 @@ class Game {
     endGame() {
         // alert("Player " + this.currentPlayer.toString() + " wins!");
         consoleBox.innerHTML = "Player " + this.currentPlayer.toString() + " wins!";
+        this.gamesPlayed++;
+        this.numWins[this.currentPlayer]++;
         const date = new Date();
         const duration = (date.getTime() - this.startTime) / 1000;
         console.log(duration);
@@ -279,6 +281,11 @@ class Game {
         xhr.open("POST", "../../php/save_game.php");
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}`);
+    }
+
+    toConsole(msg) {
+        const consoleBox = document.querySelector("#console-alert");
+        consoleBox.innerHTML += msg + "<br />";
     }
 }
 
