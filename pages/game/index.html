@@ -37,7 +37,19 @@
                 <p>Player 2</p>
             </div>
             <!-- <input type='button' onclick='restartGame()' value='Restart'/> -->
-            <button type="button" class="btn" onclick="restartGame()">Restart</button>
+            <button type="button" class="btn" id="open" onclick="openButton()">Options</button>
+            <div id="options-menu">
+                <h4>Options Menu</h4>
+                <hr>
+                <form>
+                    <input type="checkbox">Green
+                    <input type="checkbox">Red
+                    <input type="checkbox">Blue
+                    <input type="checkbox">Black
+                </form>
+                <button type="button" class="btn" id="close" onclick="closeButton()">Close</button>
+                <button type="button" class="btn" onclick="restartGame()">Restart</button>
+            </div>
             <div id="console-bar">Gomoku Terminal</div>
             <div id="console">
                 <p id="console-tag">gomoku@csci130 ~ % </p>
