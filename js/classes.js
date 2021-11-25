@@ -31,6 +31,32 @@ class Game {
         }
     }
 
+    restartGame(boardSize) {
+        // Properties
+        this.numberOfTurns = 0;
+        this.size = boardSize;
+        this.currentPlayer;
+        this.boardArray = new Array();
+        
+        // Sets time and date properties for calculating duration
+        const date = new Date();
+        this.startTime = date.getTime();
+
+        // Constucts board array and creates HTML table to represent board.
+        let html = "";
+        let cellIndex = 0;
+        for (let i = 0; i < this.size; i++) {
+            html += "<tr>";
+            for (let j = 0; j < this.size; j++) {
+                html += "<td id='tile-" + cellIndex.toString() + "' onclick='game.updateTable(id)'></td>";
+                this.boardArray.push(new Tile(cellIndex, j, i));
+                cellIndex++;
+            }
+            html += "</tr>";
+            document.querySelector("#board table").innerHTML = html;
+        }
+    }
+
     // Updates the board when the player clicks on a cell.
     updateTable(cellId) {
 
