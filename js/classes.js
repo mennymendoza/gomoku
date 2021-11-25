@@ -239,7 +239,8 @@ class Game {
 
     // Does whatever needs to happen when the game ends
     endGame() {
-        alert("Player " + this.currentPlayer.toString() + " wins!");
+        // alert("Player " + this.currentPlayer.toString() + " wins!");
+        consoleBox.innerHTML = "Player " + this.currentPlayer.toString() + " wins!";
         const date = new Date();
         const duration = (date.getTime() - this.startTime) / 1000;
         console.log(duration);
