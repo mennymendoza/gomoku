@@ -18,6 +18,16 @@
     margin-bottom: 10px;
 }
 
+/* Settings Icon */
+.fas {
+    color: var(--mainBlue);
+    font-size: 30px;
+    margin-top: 15px;
+}
+.fas:hover {
+    color: var(--orange);
+}
+
 /* OPTIONS MENU */
 #options-menu {
     display: none;

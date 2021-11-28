@@ -28,7 +28,7 @@
                         <h2>3:30</h2>
                     </div>
                     <div id="options-menu">
-                        <h3>Options Menu</h3>
+                        <h3>Settings</h3>
                         <hr>
                         <form>
                             <div>
@@ -104,6 +104,10 @@
                                     <td>2</td>
                                     <td>1</td>
                                 </tr>
+                                <tr>
+                                    <th># of wins</th>
+                                    <td colspan="2">2</td>
+                                </tr>
                             </table>
                             <h2>Player 2 Stats</h2>
                             <table>
@@ -117,12 +121,17 @@
                                     <td>2</td>
                                     <td>1</td>
                                 </tr>
+                                <tr>
+                                    <th># of wins</th>
+                                    <td colspan="2">3</td>
+                                </tr>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn" id="open" onclick="openButton()">Options</button>
+            <!-- <button type="button" class="btn" id="open" onclick="openButton()">Options</button> -->
+            <i class="fas fa-sliders-h" onclick="openButton()"></i>
             <div id="console-bar">Gomoku Terminal</div>
             <div id="console">
                 <p id="console-tag">gomoku@csci130 ~ % </p>
@@ -139,5 +148,6 @@
         <script src='../../js/requests.js'></script>
         <script src="../../js/classes.js"></script>
         <script src="../../js/game.js"></script>
+        <script src="https://kit.fontawesome.com/ddd9f3b4e4.js" crossorigin="anonymous"></script>
     </body>
 </html>
