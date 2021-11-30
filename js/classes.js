@@ -69,6 +69,14 @@ class Game {
         // if the board is empty
         if (this.boardArray[cellIndex].empty) {
 
+            // Updates timer
+            const date = new Date();
+            let currentTime = date.getTime();
+
+            let timer = document.getElementById("timer");
+            let duration = (currentTime - this.startTime) / 1000;
+            timer.innerText = `${parseInt(duration / 60)}:${parseInt(duration % 60).toString().padStart(2, '0')}`;
+
             this.decorateCell(cellId);
             this.boardArray[cellIndex].empty = false;
             this.boardArray[cellIndex].playerOwned = this.currentPlayer;
