@@ -20,6 +20,22 @@ else {
     echo "Error creating database: " . $conn->error . "<br />";
 }
 
+# Runs a query to create a user
+$query_success = $conn->query("CREATE USER 'guest'@'localhost' IDENTIFIED BY 'root9';");
+
+if ($query_success) {
+    echo "User created successfully.<br>";
+} else {
+    echo "Error creating user: " . $conn->error . "<br>";
+}
+
+$query_success = $conn->query("GRANT SELECT, INSERT, UPDATE, DELETE ON * . * TO 'guest'@'localhost';");
+if ($query_success) {
+    echo "Permissions granted successfully<br>";
+} else {
+    echo "Error granting permissions: " . $conn->error . "<br>";
+}
+
 # Closes connection
 $conn->close();
 
