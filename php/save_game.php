@@ -38,6 +38,23 @@ if ($query_success) {
     echo $conn->error;
 }
 
+$result = $conn->query("SELECT * FROM players WHERE usernm='{$_SESSION['user']}'");
+if ($row = $result->fetch_assoc()) {
+    $total_time_played = $row["time_played"];
+    $total_time_played += $duration;
+}
+else {
+    echo "Player not found. Could not update player score.";
+}
+
+$query_success = $conn->query("UPDATE players SET time_played={$total_time_played} WHERE usernm='{$_SESSION['user']}'");
+if ($query_success) {
+    echo "Player profile successfully updated.";
+} else {
+    echo "Hmmm... something went wrong on our end. Sorry!";
+    echo $conn->error;
+}
+
 
 $conn->close();
 

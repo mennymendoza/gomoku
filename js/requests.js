@@ -40,10 +40,10 @@ const signup = () => {
     xhr.send("user=" + username.value + "&pass=" + password.value);
 }
 
-const getGames = () => {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-        const response = JSON.parse(xhr.response);
+const getLeaderboard = () => {
+    const xhrGames = new XMLHttpRequest();
+    xhrGames.onload = () => {
+        const response = JSON.parse(xhrGames.response);
         const leaderboard = document.getElementById("leaderboard");
         for (let row of response) {
             const newRow = leaderboard.insertRow();
@@ -53,8 +53,23 @@ const getGames = () => {
             }
         }
     }
-    xhr.open("GET", "../../php/get_games.php");
-    xhr.send();
+    xhrGames.open("GET", "../../php/get_games.php");
+    xhrGames.send();
+
+    const xhrPlayers = new XMLHttpRequest();
+    xhrPlayers.onload = () => {
+        const response = JSON.parse(xhrPlayers.response);
+        const leaderboard = document.getElementById("leaderboard");
+        for (let row of response) {
+            const newRow = leaderboard.insertRow();
+            for (let key in row) {
+                let newCell = newRow.insertCell();
+                newCell.innerHTML = row[key];
+            }
+        }
+    }
+    xhrPlayers.open("GET", "../../php/get_players.php");
+    xhrPlayers.send();
 }
 
 const checkSession = () => {
