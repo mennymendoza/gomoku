@@ -5,30 +5,10 @@ let consoleBox = document.querySelector('#console-alert')
 class Game {
     constructor(boardSize) {
         // Properties
-        this.numberOfTurns = 0;
-        this.size = boardSize;
-        this.currentPlayer;
-        this.numWins = [0, 0] // array, each element represents each player
+        this.numWins = [0, 0]; // array, each element represents each player
         this.gamesPlayed = 0;
-        this.boardArray = new Array();
         
-        // Sets time and date properties for calculating duration
-        const date = new Date();
-        this.startTime = date.getTime();
-
-        // Constucts board array and creates HTML table to represent board.
-        let html = "";
-        let cellIndex = 0;
-        for (let i = 0; i < this.size; i++) {
-            html += "<tr>";
-            for (let j = 0; j < this.size; j++) {
-                html += "<td id='tile-" + cellIndex.toString() + "' onclick='game.updateTable(id)'></td>";
-                this.boardArray.push(new Tile(cellIndex, j, i));
-                cellIndex++;
-            }
-            html += "</tr>";
-            document.querySelector("#board table").innerHTML = html;
-        }
+        this.restartGame(boardSize);
     }
 
     restartGame(boardSize) {
@@ -96,10 +76,14 @@ class Game {
 
         // checks which player's turn it is and decorates accordingly
         if (!this.currentPlayer) {
+            selectedCell.innerText = this.numberOfTurns + 1;
             selectedCell.style.backgroundColor = "#000";
+            selectedCell.style.color = "#fff";
         }
         else {
+            selectedCell.innerText = this.numberOfTurns + 1;
             selectedCell.style.backgroundColor = "#fff";
+            selectedCell.style.color = "#000";
         }
     }
 

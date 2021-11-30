@@ -61,8 +61,6 @@
     margin-bottom: 20px;
 }
 #board {
-    height: 500px;
-    width: 500px;
     background-color: #86a3d7;
     position: absolute;
 }
@@ -105,13 +103,14 @@
     background-color: #f00;
 }
 table {
-    height: 100%;
-    width: 100%;
     border-spacing: 0;
 }
 td {
     border: 1px solid #000;
     border-collapse: collapse;
+    width: 30px;
+    height: 30px;
+    text-align: center;
 }
 
 /* DISPLAY GAME STATS */
