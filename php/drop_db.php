@@ -1,7 +1,7 @@
 <?php
 
 # Connects to mysql database
-$conn = new mysqli("localhost", "juan", "password");
+$conn = new mysqli("localhost", "root", "");
 
 if ($conn->connect_error) {
     die("Database error: " . $conn->connect_error . "<br />");

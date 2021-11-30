@@ -1,7 +1,7 @@
 <?php
 
 # Connects to mysql database
-$conn = new mysqli("localhost", "juan", "password");
+$conn = new mysqli("localhost", "root", "");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<br />");
@@ -25,7 +25,7 @@ $conn->close();
 
 
 # Connects to mysql database
-$conn = new mysqli("localhost", "juan", "password", "gomoku");
+$conn = new mysqli("localhost", "root", "", "gomoku");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<br />");
