@@ -3,38 +3,32 @@
 "use strict";
 let consoleBox = document.querySelector('#console-alert')
 class Game {
-    constructor(boardSize) {
+    constructor() {
         // Properties
-        this.numberOfTurns = 0;
-        this.size = boardSize;
-        this.currentPlayer;
         this.numWins = [0, 0] // array, each element represents each player
         this.gamesPlayed = 0;
-        this.boardArray = new Array();
+        this.playerColors = ["#000", "#fff"]
         
-        // Sets time and date properties for calculating duration
-        const date = new Date();
-        this.startTime = date.getTime();
-
-        // Constucts board array and creates HTML table to represent board.
-        let html = "";
-        let cellIndex = 0;
-        for (let i = 0; i < this.size; i++) {
-            html += "<tr>";
-            for (let j = 0; j < this.size; j++) {
-                html += "<td id='tile-" + cellIndex.toString() + "' onclick='game.updateTable(id)'></td>";
-                this.boardArray.push(new Tile(cellIndex, j, i));
-                cellIndex++;
-            }
-            html += "</tr>";
-            document.querySelector("#board table").innerHTML = html;
-        }
+        this.restartGame();
     }
 
-    restartGame(boardSize) {
-        // Properties
+    restartGame() {
+
+        // Gets all "option" options
+        let collection = document.querySelectorAll("#options-menu select");
+        
+        // Sets background color
+        let boardElem = document.getElementById("board");
+        console.log(boardElem);
+        boardElem.style.backgroundColor = collection[0].value;
+
+        this.playerColors[0] = collection[2].value;
+        this.playerColors[1] = collection[3].value;
+        console.log(this.playerColors)
+
+        // Class Properties
         this.numberOfTurns = 0;
-        this.size = boardSize;
+        this.size = parseInt(collection[1].value);
         this.currentPlayer;
         this.boardArray = new Array();
         
@@ -102,12 +96,15 @@ class Game {
         // Gets HTML element of the cell to decorate
         let selectedCell = document.getElementById(cellId);
 
-        // checks which player's turn it is and decorates accordingly
+        // TODO: This can replace the code below
+        // selectedCell.style.backgroundColor = this.playerColors[this.currentPlayer];
+
         if (!this.currentPlayer) {
-            selectedCell.style.backgroundColor = "#000";
+            // if first player
+            selectedCell.style.backgroundColor = this.playerColors[0];
         }
         else {
-            selectedCell.style.backgroundColor = "#fff";
+            selectedCell.style.backgroundColor = this.playerColors[1];
         }
     }
 
