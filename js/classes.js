@@ -8,6 +8,34 @@ class Game {
         this.numberOfTurns = 0;
         this.size = boardSize;
         this.currentPlayer;
+        this.numWins = [0, 0] // array, each element represents each player
+        this.gamesPlayed = 0;
+        this.boardArray = new Array();
+        
+        // Sets time and date properties for calculating duration
+        const date = new Date();
+        this.startTime = date.getTime();
+
+        // Constucts board array and creates HTML table to represent board.
+        let html = "";
+        let cellIndex = 0;
+        for (let i = 0; i < this.size; i++) {
+            html += "<tr>";
+            for (let j = 0; j < this.size; j++) {
+                html += "<td id='tile-" + cellIndex.toString() + "' onclick='game.updateTable(id)'></td>";
+                this.boardArray.push(new Tile(cellIndex, j, i));
+                cellIndex++;
+            }
+            html += "</tr>";
+            document.querySelector("#board table").innerHTML = html;
+        }
+    }
+
+    restartGame(boardSize) {
+        // Properties
+        this.numberOfTurns = 0;
+        this.size = boardSize;
+        this.currentPlayer;
         this.boardArray = new Array();
         
         // Sets time and date properties for calculating duration
@@ -67,7 +95,7 @@ class Game {
         let selectedCell = document.getElementById(cellId);
 
         // checks which player's turn it is and decorates accordingly
-        if (this.currentPlayer) {
+        if (!this.currentPlayer) {
             selectedCell.style.backgroundColor = "#000";
         }
         else {
@@ -241,16 +269,24 @@ class Game {
     endGame() {
         // alert("Player " + this.currentPlayer.toString() + " wins!");
         consoleBox.innerHTML = "Player " + this.currentPlayer.toString() + " wins!";
+        this.gamesPlayed++;
+        this.numWins[this.currentPlayer]++;
         const date = new Date();
         const duration = (date.getTime() - this.startTime) / 1000;
-        console.log(duration);
+        const game_won = 1 - this.currentPlayer;
+        console.log(game_won);
         const xhr = new XMLHttpRequest();
         xhr.onload = () => {
             console.log(xhr.response);
         }
         xhr.open("POST", "../../php/save_game.php");
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-        xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}`);
+        xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}&game_won=${game_won}`);
+    }
+
+    toConsole(msg) {
+        const consoleBox = document.querySelector("#console-alert");
+        consoleBox.innerHTML += msg + "<br />";
     }
 }
 

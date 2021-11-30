@@ -53,8 +53,11 @@ else {
 # Runs a query to create a database
 $query_success = $conn->query("CREATE TABLE players (
     pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    usernm VARCHAR(30),
-    passwd VARCHAR(30)
+    usernm VARCHAR(30) NOT NULL,
+    passwd VARCHAR(30) NOT NULL,
+    games_won INT(6) NOT NULL,
+    time_played FLOAT(20, 3) NOT NULL,
+    games_played INT(6) NOT NULL
     )");
 
 if ($query_success) {
