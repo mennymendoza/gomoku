@@ -273,14 +273,15 @@ class Game {
         this.numWins[this.currentPlayer]++;
         const date = new Date();
         const duration = (date.getTime() - this.startTime) / 1000;
-        console.log(duration);
+        const game_won = 1 - this.currentPlayer;
+        console.log(game_won);
         const xhr = new XMLHttpRequest();
         xhr.onload = () => {
             console.log(xhr.response);
         }
         xhr.open("POST", "../../php/save_game.php");
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-        xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}`);
+        xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}&game_won=${game_won}`);
     }
 
     toConsole(msg) {
