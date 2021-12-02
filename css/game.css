@@ -102,10 +102,10 @@
 #circle-2 {
     background-color: #f00;
 }
-table {
+#board table {
     border-spacing: 0;
 }
-td {
+#board td {
     border: 1px solid #000;
     border-collapse: collapse;
     width: 30px;
@@ -115,6 +115,7 @@ td {
 
 /* DISPLAY GAME STATS */
 #game-stats table {
+    width: 400px;
     margin-bottom: 20px;
 }
 #game-stats th {
