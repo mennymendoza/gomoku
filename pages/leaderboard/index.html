@@ -19,8 +19,19 @@
                 <li><a href="../../index.html">Logout</a></li>
             </ul>  
         </nav>
-        <section id="main-section">
+        <div class="body-div">
             <h1>Stats</h1>
+            <table id="leaderboard">
+                <caption class="stats-title">Ranks</caption>
+                <tr class="table-header">
+                    <th>Player</th>
+                    <th></th>
+                    <th>Games Won</th>
+                    <th>Time Played</th>
+                    <th>Total Games Played</th>
+                </tr>
+                <!-- backend would fill the rows here -->
+            </table>
             <table id="leaderboard">
                 <caption class="stats-title">Ranks</caption>
                 <!-- backend would fill the rows here -->
@@ -36,7 +47,12 @@
                 <p id="hours-played"></p>
                 <p>Hours Played</p>
             </div>
-        </section>
+        </div>
+        <footer>
+            <h4>Designed & Developed</h4>
+            <h5>By</h5>
+            <h4>Israel P. & John M.</h4>
+        </footer>
         <!-- footer goes here -->
         <script src='../../js/requests.js'></script>
     </body>
