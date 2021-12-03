@@ -24,7 +24,7 @@
                 <div id="timer-sect">
                     <h1>Timer</h1>
                     <div>
-                        <h2>3:30</h2>
+                        <h2 id="timer">0:00</h2>
                     </div>
                     <div id="options-menu">
                         <h3>Settings</h3>
@@ -42,8 +42,8 @@
                             <div>
                                 <label for="size">Select the size for the board:</label>
                                 <select name="size" id="size">
-                                    <option value="sixteen">16x16</option>
-                                    <option value="nineteen">19x19</option>
+                                    <option value="16">16x16</option>
+                                    <option value="19">19x19</option>
                                 </select>
                             </div>
                             <div>
@@ -66,7 +66,7 @@
                         </form>
                         <div id="buttons">
                             <button type="button" class="btn" id="close" onclick="closeButton()">Close</button>
-                            <button type="button" class="btn" onclick="game.restartGame(15)">Restart</button>
+                            <button type="button" class="btn" onclick="game.restartGame()">Restart</button>
                         </div>                       
                     </div>
                 </div>

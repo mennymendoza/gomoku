@@ -3,18 +3,32 @@
 "use strict";
 let consoleBox = document.querySelector('#console-alert')
 class Game {
-    constructor(boardSize) {
+    constructor() {
         // Properties
-        this.numWins = [0, 0]; // array, each element represents each player
+        this.numWins = [0, 0] // array, each element represents each player
         this.gamesPlayed = 0;
+        this.playerColors = ["#000", "#fff"]
         
-        this.restartGame(boardSize);
+        this.restartGame();
     }
 
-    restartGame(boardSize) {
-        // Properties
+    restartGame() {
+
+        // Gets all "option" options
+        let collection = document.querySelectorAll("#options-menu select");
+        
+        // Sets background color
+        let boardElem = document.getElementById("board");
+        console.log(boardElem);
+        boardElem.style.backgroundColor = collection[0].value;
+
+        this.playerColors[0] = collection[2].value;
+        this.playerColors[1] = collection[3].value;
+        console.log(this.playerColors)
+
+        // Class Properties
         this.numberOfTurns = 0;
-        this.size = boardSize;
+        this.size = parseInt(collection[1].value);
         this.currentPlayer;
         this.boardArray = new Array();
         
@@ -49,6 +63,14 @@ class Game {
         // if the board is empty
         if (this.boardArray[cellIndex].empty) {
 
+            // Updates timer
+            const date = new Date();
+            let currentTime = date.getTime();
+
+            let timer = document.getElementById("timer");
+            let duration = (currentTime - this.startTime) / 1000;
+            timer.innerText = `${parseInt(duration / 60)}:${parseInt(duration % 60).toString().padStart(2, '0')}`;
+
             this.decorateCell(cellId);
             this.boardArray[cellIndex].empty = false;
             this.boardArray[cellIndex].playerOwned = this.currentPlayer;
@@ -74,7 +96,9 @@ class Game {
         // Gets HTML element of the cell to decorate
         let selectedCell = document.getElementById(cellId);
 
-        // checks which player's turn it is and decorates accordingly
+        // TODO: This can replace the code below
+        // selectedCell.style.backgroundColor = this.playerColors[this.currentPlayer];
+
         if (!this.currentPlayer) {
             selectedCell.innerText = this.numberOfTurns + 1;
             selectedCell.style.backgroundColor = "#000";
@@ -84,6 +108,11 @@ class Game {
             selectedCell.innerText = this.numberOfTurns + 1;
             selectedCell.style.backgroundColor = "#fff";
             selectedCell.style.color = "#000";
+            // if first player
+//             selectedCell.style.backgroundColor = this.playerColors[0];
+//         }
+//         else {
+//             selectedCell.style.backgroundColor = this.playerColors[1];
         }
     }
 
