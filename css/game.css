@@ -55,8 +55,8 @@
 
 /* GAME BOARD */
 #container {
-    height: 500px;
-    width: 500px;
+    min-height: 500px;
+    min-width: 500px;
     position: relative;
     margin-bottom: 20px;
 }
@@ -115,6 +115,7 @@
 
 /* DISPLAY GAME STATS */
 #game-stats table {
+    border-collapse: collapse;
     width: 400px;
     margin-bottom: 20px;
 }
