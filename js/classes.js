@@ -100,11 +100,19 @@ class Game {
         // selectedCell.style.backgroundColor = this.playerColors[this.currentPlayer];
 
         if (!this.currentPlayer) {
-            // if first player
-            selectedCell.style.backgroundColor = this.playerColors[0];
+            selectedCell.innerText = this.numberOfTurns + 1;
+            selectedCell.style.backgroundColor = "#000";
+            selectedCell.style.color = "#fff";
         }
         else {
-            selectedCell.style.backgroundColor = this.playerColors[1];
+            selectedCell.innerText = this.numberOfTurns + 1;
+            selectedCell.style.backgroundColor = "#fff";
+            selectedCell.style.color = "#000";
+            // if first player
+//             selectedCell.style.backgroundColor = this.playerColors[0];
+//         }
+//         else {
+//             selectedCell.style.backgroundColor = this.playerColors[1];
         }
     }
 
