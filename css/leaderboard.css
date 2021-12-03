@@ -1,11 +1,38 @@
-#leaderboard {
-    min-height: 350px;
+/* LEADERBOARD TABLE */
+table {
+    min-height: 150px;
     min-width: 350px;
-    border: 1px solid #000;
     margin-bottom: 60px;
-    border-radius: 5px;
+    border-collapse: collapse;
+}
+.table-header {
+    height: 30px;
+    background: var(--mainBlue);
+}
+th {
+    border: 1px solid var(--gray);
+    text-align: center;
+    padding: 0 10px;
+    color: var(--gray);
+}
+tr:nth-child(2n+3) {
+    background-color: var(--gray);
+}
+tr:nth-child(odd) td {
+    border-right: 1px solid white;
+}
+td {
+    height: 50px;
+    padding: 0 10px;
+    text-align: center;
+    border-right: 1px solid var(--gray);
+}
+td:last-child {
+    border: 0;
 }
 
+
+/* PLAYER STATS SECTION */
 #player-stats {
     display: flex;
     justify-content: space-between;
@@ -15,17 +42,15 @@
     padding: 20px;
     border-radius: 15px;
 }
-
 .stats-title {
-    font-size: 16px;
+    text-align: center;
+    font-size: 18px;
     margin-bottom: 15px;
 }
-
 #wl-record {
     text-align: center;
     margin: 0px 40px;
 }
-
 #games-played, #hours-played {
     display: inline-block;
     text-align: center;
@@ -34,15 +59,9 @@
     width: 20px;
     border-radius: 20px;
 }
-
 #games-played {
     background-color: #e28413;
 }
-
 #hours-played {
     background-color: #7692ff;
-}
-
-caption {
-    text-align: left;
 }
