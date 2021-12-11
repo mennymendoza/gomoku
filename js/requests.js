@@ -54,25 +54,10 @@ const signup = () => {
 }
 
 const getLeaderboard = () => {
-    const xhrGames = new XMLHttpRequest();
-    xhrGames.onload = () => {
-        const response = JSON.parse(xhrGames.response);
-        const leaderboard = document.getElementById("leaderboard");
-        for (let row of response) {
-            const newRow = leaderboard.insertRow();
-            for (let key in row) {
-                let newCell = newRow.insertCell();
-                newCell.innerHTML = row[key];
-            }
-        }
-    }
-    xhrGames.open("GET", "../../php/get_games.php");
-    xhrGames.send();
-
     const xhrPlayers = new XMLHttpRequest();
     xhrPlayers.onload = () => {
         const response = JSON.parse(xhrPlayers.response);
-        const leaderboard = document.getElementById("leaderboard");
+        const leaderboard = document.getElementById("player-leaderboard");
         for (let row of response) {
             const newRow = leaderboard.insertRow();
             for (let key in row) {
@@ -83,6 +68,21 @@ const getLeaderboard = () => {
     }
     xhrPlayers.open("GET", "../../php/get_players.php");
     xhrPlayers.send();
+
+    const xhrGames = new XMLHttpRequest();
+    xhrGames.onload = () => {
+        const response = JSON.parse(xhrGames.response);
+        const leaderboard = document.getElementById("game-leaderboard");
+        for (let row of response) {
+            const newRow = leaderboard.insertRow();
+            for (let key in row) {
+                let newCell = newRow.insertCell();
+                newCell.innerHTML = row[key];
+            }
+        }
+    }
+    xhrGames.open("GET", "../../php/get_games.php");
+    xhrGames.send();
 }
 
 const checkSession = () => {

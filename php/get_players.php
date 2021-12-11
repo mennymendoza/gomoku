@@ -5,7 +5,6 @@ session_start();
 # Class initialization
 class Player {
     public $usernm;
-    public $passwd;
     public $games_won;
     public $time_played;
     public $games_played;
