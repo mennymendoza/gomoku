@@ -134,7 +134,10 @@ class Game {
         }
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
-            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row..."
+            consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -153,6 +156,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -171,6 +177,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -189,6 +198,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -208,6 +220,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -227,6 +242,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -246,6 +264,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
@@ -265,6 +286,9 @@ class Game {
         if (pieceCounter === 3 || pieceCounter === 4) {
             // alert("Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...");
             consoleBox.innerHTML = "Getting close to a win... Player " + this.currentPlayer + " has " + pieceCounter + " in a row...";
+            let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
+            let points = parseInt(pointsBox.innerHTML) + 1;
+            pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
             return true;
