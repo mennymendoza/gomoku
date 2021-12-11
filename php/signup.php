@@ -36,7 +36,7 @@ if ($result) {
 if ($user_exists === false) {
     $query_success = $conn->query("INSERT INTO players (usernm, passwd, games_won, time_played, games_played) VALUES ('${user}', '${pass}', 0, 0.0, 0)");
     if ($query_success) {
-        echo "Thanks for signing up!";
+        echo "success";
     } else {
         echo "Hmmm... something went wrong on our end. Sorry!";
     }

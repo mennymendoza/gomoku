@@ -36,7 +36,7 @@ if ($result) {
             $_SESSION['user'] = $user;
         }
         else {
-            echo "That's not the correct password, you sneaky fuck.";
+            echo "That's not the correct password. Are you trying to be sneaky?";
         }
     }
 } else {

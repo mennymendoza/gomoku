@@ -6,9 +6,14 @@ const login = () => {
     let password = document.getElementById("password");
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
-        console.log(xhr.response);
         if (xhr.response == 'correct') {
             window.location.replace("../game/index.html");
+        }
+        else {
+            let errorDiv = document.getElementById('error-sect');
+            let errorDivText = document.querySelector('#error-sect p');
+            errorDivText.innerHTML = xhr.response;
+            errorDiv.style.display = 'block';
         }
     }
     xhr.open("POST", "../../php/login.php");
@@ -33,7 +38,15 @@ const signup = () => {
     let password = document.getElementById("password");
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
-        console.log(xhr.response);
+        if (xhr.response == 'success') {
+            window.location.replace("../game/index.html");
+        }
+        else {
+            let errorDiv = document.getElementById('error-sect');
+            let errorDivText = document.querySelector('#error-sect p');
+            errorDivText.innerHTML = xhr.response;
+            errorDiv.style.display = 'block';
+        }
     }
     xhr.open("POST", "../../php/signup.php");
     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
