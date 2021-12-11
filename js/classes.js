@@ -140,6 +140,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -161,6 +164,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -182,6 +188,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -203,6 +212,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -225,6 +237,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -247,6 +262,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -269,6 +287,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
@@ -291,6 +312,9 @@ class Game {
             pointsBox.innerHTML = points;
         }
         if (pieceCounter === 5) {
+            let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
+            let points = parseInt(winsBox.innerHTML) + 1;
+            winsBox.innerHTML = points;
             return true;
         }
 
