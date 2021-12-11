@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error ."<br>");
 }
 
-$result = $conn->query("SELECT * FROM players ORDER BY games_won DESC");
+$result = $conn->query("SELECT * FROM players ORDER BY games_won DESC LIMIT 10");
 $response = array();
 
 while ($row = $result->fetch_assoc()) {

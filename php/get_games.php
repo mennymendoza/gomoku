@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error ."<br>");
 }
 
-$result = $conn->query("SELECT * FROM games WHERE player_name='{$_SESSION['user']}'");
+$result = $conn->query("SELECT * FROM games WHERE player_name='{$_SESSION['user']}' LIMIT 40");
 $response = array();
 
 while ($row = $result->fetch_assoc()) {
