@@ -3,7 +3,7 @@
 require 'set_credentials.php';
 
 # Connects to mysql database
-$conn = new mysqli("localhost", $db_user, $db_pass);
+$conn = new mysqli("localhost", 'root', '');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<br />");
@@ -23,7 +23,7 @@ else {
 }
 
 # Runs a query to create a user
-$query_success = $conn->query("CREATE USER 'guest'@'localhost' IDENTIFIED BY 'root9';");
+$query_success = $conn->query("CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass';");
 
 if ($query_success) {
     echo "User created successfully.<br>";
@@ -43,7 +43,7 @@ $conn->close();
 
 
 # Connects to mysql database
-$conn = new mysqli("localhost", "root", "", "gomoku");
+$conn = new mysqli("localhost", $db_user, $db_pass, $db_name);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<br />");
