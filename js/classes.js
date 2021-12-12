@@ -97,23 +97,8 @@ class Game {
         let selectedCell = document.getElementById(cellId);
 
         // TODO: This can replace the code below
-        // selectedCell.style.backgroundColor = this.playerColors[this.currentPlayer];
-
-        if (!this.currentPlayer) {
-            selectedCell.innerText = this.numberOfTurns + 1;
-            selectedCell.style.backgroundColor = "#000";
-            selectedCell.style.color = "#fff";
-        }
-        else {
-            selectedCell.innerText = this.numberOfTurns + 1;
-            selectedCell.style.backgroundColor = "#fff";
-            selectedCell.style.color = "#000";
-            // if first player
-//             selectedCell.style.backgroundColor = this.playerColors[0];
-//         }
-//         else {
-//             selectedCell.style.backgroundColor = this.playerColors[1];
-        }
+        selectedCell.innerText = this.numberOfTurns + 1;
+        selectedCell.style.backgroundColor = this.playerColors[this.currentPlayer];
     }
 
     // Checks to see if the current player has won.
