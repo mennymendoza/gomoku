@@ -31,7 +31,7 @@ if ($query_success) {
     echo "Error creating user: " . $conn->error . "<br>";
 }
 
-$query_success = $conn->query("GRANT SELECT, INSERT, UPDATE, DELETE ON * . * TO 'guest'@'localhost';");
+$query_success = $conn->query("GRANT ALL PRIVILEGES ON * . * TO '$db_user'@'localhost';");
 if ($query_success) {
     echo "Permissions granted successfully<br>";
 } else {
