@@ -14,6 +14,8 @@ class Game {
 
     restartGame() {
 
+        document.getElementById('win-screen').style.display = 'none';
+
         // Gets all "option" options
         let collection = document.querySelectorAll("#options-menu select");
         
@@ -380,6 +382,8 @@ class Game {
         xhr.open("POST", "../../php/save_game.php");
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         xhr.send(`score=0&duration=${duration}&num_turns=${this.numberOfTurns}&game_won=${game_won}`);
+
+        document.getElementById('win-screen').style.display = 'flex';
     }
 
     toConsole(msg) {
