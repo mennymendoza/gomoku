@@ -19,17 +19,16 @@ class Game {
         
         // Sets background color
         let boardElem = document.getElementById("board");
-        console.log(boardElem);
         boardElem.style.backgroundColor = collection[0].value;
 
         this.playerColors[0] = collection[2].value;
         this.playerColors[1] = collection[3].value;
-        console.log(this.playerColors)
 
         // Class Properties
         this.numberOfTurns = 0;
         this.size = parseInt(collection[1].value);
         this.currentPlayer;
+        this.posMoveId = 0;
         this.boardArray = new Array();
         
         // Sets time and date properties for calculating duration
@@ -53,6 +52,10 @@ class Game {
 
     // Updates the board when the player clicks on a cell.
     updateTable(cellId) {
+
+        if (this.boardArray[this.posMoveId].empty) {
+            document.getElementById('tile-' + this.posMoveId.toString()).style.borderColor = '#000';
+        }
 
         // index of cell that was clicked (for accessing the array)
         let cellIndex = parseInt(cellId.substring(5));
@@ -103,6 +106,7 @@ class Game {
 
     // Checks to see if the current player has won.
     playerWins(cellIndex) {
+        let posMoveColor = '#0f0';
         let x = this.boardArray[cellIndex].xIndex;
         let y = this.boardArray[cellIndex].yIndex;
         let origIndex = this.getIndex(x, y);
@@ -123,6 +127,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -147,6 +157,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -171,6 +187,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -195,6 +217,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -220,6 +248,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -245,6 +279,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -270,6 +310,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -295,6 +341,12 @@ class Game {
             let pointsBox = document.getElementById(`points-${pieceCounter}-p${this.currentPlayer + 1}`)
             let points = parseInt(pointsBox.innerHTML) + 1;
             pointsBox.innerHTML = points;
+
+            let possibleMove = this.getIndex(nextX, nextY);
+            if (this.boardArray[nextIndex].empty) {
+                this.posMoveId = possibleMove;
+                document.getElementById('tile-' + possibleMove.toString()).style.borderColor = posMoveColor;
+            }
         }
         if (pieceCounter === 5) {
             let winsBox = document.getElementById(`wins-p${this.currentPlayer + 1}`)
@@ -306,7 +358,7 @@ class Game {
         return false;
     }
     
-    // Given a cellId, returns an array containing x and y coordinates.
+    // Given x-y coordinates, returns cell number.
     getIndex(x, y) {
         return this.size * y + x;
     }
