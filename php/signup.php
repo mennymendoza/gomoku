@@ -1,5 +1,7 @@
 <?php 
 
+require 'set_credentials.php';
+
 if (isset($_POST["user"])) {
     $user = $_POST["user"];
 }
@@ -15,7 +17,7 @@ else {
 }
 
 // boilerplate mysql api code
-$conn = new mysqli("localhost", "guest", "root9", "gomoku");
+$conn = new mysqli("localhost", $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

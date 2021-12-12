@@ -1,7 +1,9 @@
 <?php
 
+require 'set_credentials.php';
+
 # Connects to mysql database
-$conn = new mysqli("localhost", "root", "");
+$conn = new mysqli("localhost", $db_user, $db_pass);
 
 if ($conn->connect_error) {
     die("Database error: " . $conn->connect_error . "<br />");
