@@ -7,7 +7,6 @@ session_start();
 # Class initialization
 class Game {
     public $player_name;
-    public $score;
     public $duration;
     public $number_of_turns;
 }
@@ -24,7 +23,6 @@ $response = array();
 while ($row = $result->fetch_assoc()) {
     $curr = new Game;
     $curr->player_name = $row["player_name"];
-    $curr->score = $row["score"];
     $curr->duration = $row["duration"];
     $curr->number_of_turns = $row["number_of_turns"];
     array_push($response, $curr);
