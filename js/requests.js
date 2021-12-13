@@ -7,7 +7,7 @@ const login = () => {
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
         if (xhr.response == 'correct') {
-            window.location.replace("../game/index.html");
+            window.location.replace("../menu/index.html");
         }
         else {
             let errorDiv = document.getElementById('error-sect');
