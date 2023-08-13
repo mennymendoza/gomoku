@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+    www:
+        build: .
+        container_name: gomoku_app
+        restart: always
+        ports:
+            - "127.0.0.1:8080:80"
+        volumes:
+            - ./app:/var/www/html
+    db:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: mssql_db
+        restart: always
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_SA_PASSWORD: "SuperSecurePW1!"
+        ports:
+            - "127.0.0.1:1433:1433"

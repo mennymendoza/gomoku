@@ -3,7 +3,7 @@
 require 'set_credentials.php';
 
 # Connects to mysql database
-$conn = new mysqli("localhost", 'root', '');
+$conn = new mysqli("localhost", 'root', 'example');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<br />");
