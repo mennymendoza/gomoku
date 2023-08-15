@@ -1,6 +1,6 @@
 <?php 
 
-require 'set_credentials.php';
+require 'set_conn_options.php';
 
 session_start();
 
@@ -20,32 +20,39 @@ else {
     die("No username found.");
 }
 
-// boilerplate mysql api code
-$conn = new mysqli("localhost", $db_user, $db_pass, $db_name);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Connect to the SQL Server
+$conn = sqlsrv_connect($server_name, $conn_options);
+
+if ($conn === false) {
+    die("Connection failed.");
 }
 
-$result = $conn->query("SELECT * FROM players WHERE usernm='${user}'");
-if ($result) {
-    if ($result->num_rows === 0) {
-        echo "Could not find anyone with that login.";
+// Checks to see if user exists
+$user_query = "SELECT * FROM players WHERE usernm = ?";
+$user_params = array($user);
+
+$user_stmt = sqlsrv_query($conn, $user_query, $user_params);
+if( $user_stmt === false )
+{
+    die("Login request failed.");
+}
+if ( $row = sqlsrv_fetch_array( $user_stmt, SQLSRV_FETCH_ASSOC) )
+{
+    if ($row['passwd'] === $pass) {
+        $_SESSION['valid'] = true;
+        $_SESSION['user'] = $user;
+        echo "success";
     }
     else {
-        $row = $result->fetch_assoc();
-        if ($row["passwd"] == $pass) {
-            echo "correct";
-            $_SESSION['valid'] = true;
-            $_SESSION['user'] = $user;
-        }
-        else {
-            echo "That's not the correct password. Are you trying to be sneaky?";
-        }
+        die("Incorrect password.");
     }
-} else {
-    echo "Oops, something went wrong on our end. Sorry!";
+}
+else {
+    die("Login request failed.");
 }
 
-$conn->close();
+/* Free the statement and connection resources. */
+sqlsrv_free_stmt($user_stmt);
+sqlsrv_close($conn);
 
 ?>

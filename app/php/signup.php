@@ -31,7 +31,7 @@ $user_params = array($user);
 $user_stmt = sqlsrv_query($conn, $user_query, $user_params);
 if( $user_stmt === false )
 {
-    die("Login request failed.");
+    die("Sign up request failed.");
 }
 if ( $row = sqlsrv_fetch_array( $user_stmt, SQLSRV_FETCH_ASSOC) )
 {
@@ -42,19 +42,19 @@ $insert_query = "INSERT INTO players (usernm, passwd, games_won, time_played, ga
 $insert_params = array($user, $pass, 0, 0.0, 0);
 /* Prepare the statement. */
 if (!($insert_stmt = sqlsrv_prepare($conn, $insert_query, $insert_params))) {
-    die("Login request failed.");
+    die("Sign up request failed.");
 }
 
 /* Execute the statement. */
 if (sqlsrv_execute($insert_stmt)) {
     echo "success";
 } else {
-    die("Login request failed.");
+    die("Sign up request failed.");
 }
 
 /* Free the statement and connection resources. */
 sqlsrv_free_stmt($user_stmt);
-// sqlsrv_free_stmt($insert_stmt);
+sqlsrv_free_stmt($insert_stmt);
 sqlsrv_close($conn);
 
 ?>

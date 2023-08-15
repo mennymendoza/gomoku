@@ -6,7 +6,7 @@ const login = () => {
     let password = document.getElementById("password");
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
-        if (xhr.response == 'correct') {
+        if (xhr.response == 'success') {
             window.location.replace("../menu/index.html");
         }
         else {
