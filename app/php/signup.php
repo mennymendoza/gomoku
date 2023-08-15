@@ -1,7 +1,8 @@
 <?php 
 
-require 'set_credentials.php';
+require 'set_conn_options.php';
 
+// Checking POST request parameters
 if (isset($_POST["user"])) {
     $user = $_POST["user"];
 }
@@ -16,34 +17,44 @@ else {
     die("No password found.");
 }
 
-// boilerplate mysql api code
-$conn = new mysqli("localhost", $db_user, $db_pass, $db_name);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Connect to the SQL Server
+$conn = sqlsrv_connect($server_name, $conn_options);
+
+if ($conn === false) {
+    die("Connection failed.");
 }
 
-$user_exists = true;
-$result = $conn->query("SELECT * FROM players WHERE usernm='${user}'");
-if ($result) {
-    if ($result->num_rows === 0) {
-        $user_exists = false;
-    }
-    else {
-        echo "That user already exists :C";
-    }
+// Checks to see if user exists
+$user_query = "SELECT * FROM players WHERE usernm = ?";
+$user_params = array($user);
+
+$user_stmt = sqlsrv_query($conn, $user_query, $user_params);
+if( $user_stmt === false )
+{
+    die("Login request failed.");
+}
+if ( $row = sqlsrv_fetch_array( $user_stmt, SQLSRV_FETCH_ASSOC) )
+{
+    die("User already exists.");
+}
+
+$insert_query = "INSERT INTO players (usernm, passwd, games_won, time_played, games_played) VALUES (?, ?, ?, ?, ?)";
+$insert_params = array($user, $pass, 0, 0.0, 0);
+/* Prepare the statement. */
+if (!($insert_stmt = sqlsrv_prepare($conn, $insert_query, $insert_params))) {
+    die("Login request failed.");
+}
+
+/* Execute the statement. */
+if (sqlsrv_execute($insert_stmt)) {
+    echo "success";
 } else {
-    echo "Oops, something went wrong on our end. Sorry!";
+    die("Login request failed.");
 }
 
-if ($user_exists === false) {
-    $query_success = $conn->query("INSERT INTO players (usernm, passwd, games_won, time_played, games_played) VALUES ('${user}', '${pass}', 0, 0.0, 0)");
-    if ($query_success) {
-        echo "success";
-    } else {
-        echo "Hmmm... something went wrong on our end. Sorry!";
-    }
-}
-
-$conn->close();
+/* Free the statement and connection resources. */
+sqlsrv_free_stmt($user_stmt);
+// sqlsrv_free_stmt($insert_stmt);
+sqlsrv_close($conn);
 
 ?>

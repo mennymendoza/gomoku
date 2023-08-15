@@ -1,90 +1,88 @@
 <?php
+$serverName = "mssql_db";
+$connectionOptions = array(
+    "Database" => "master",
+    "Uid" => "SA",
+    "PWD" => "SuperSecurePW1!",
+    "TrustServerCertificate" => true
+);
 
-require 'set_credentials.php';
+// Connect to the SQL Server
+$conn = sqlsrv_connect($serverName, $connectionOptions);
 
-# Connects to mysql database
-$conn = new mysqli("localhost", 'root', 'example');
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error . "<br />");
-}
-else {
-    echo "Connected successfully.<br />";
-}
-
-# Runs a query to create a database
-$query_success = $conn->query("CREATE DATABASE gomoku");
-
-if ($query_success) {
-    echo "Database created successfully.<br />";
-}
-else {
-    echo "Error creating database: " . $conn->error . "<br />";
+if ($conn === false) {
+    die("Connection failed: " . print_r(sqlsrv_errors(), true));
 }
 
-# Runs a query to create a user
-$query_success = $conn->query("CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass';");
+// Create a new database
+$databaseName = "gomoku";
+$createDatabaseQuery = "CREATE DATABASE $databaseName";
+$createDatabaseResult = sqlsrv_query($conn, $createDatabaseQuery);
 
-if ($query_success) {
-    echo "User created successfully.<br>";
-} else {
-    echo "Error creating user: " . $conn->error . "<br>";
+if ($createDatabaseResult === false) {
+    die("Error creating database: " . print_r(sqlsrv_errors(), true));
 }
 
-$query_success = $conn->query("GRANT ALL PRIVILEGES ON * . * TO '$db_user'@'localhost';");
-if ($query_success) {
-    echo "Permissions granted successfully<br>";
-} else {
-    echo "Error granting permissions: " . $conn->error . "<br>";
+echo "Database created successfully.<br>";
+
+// Create a new user with all permissions
+$newUser = "gomoku_user";
+$newPassword = "SupersecurePW1!";
+$createUserQuery = "USE $databaseName;
+                    CREATE LOGIN $newUser WITH PASSWORD = '$newPassword';
+                    USE $databaseName;
+                    CREATE USER $newUser FOR LOGIN $newUser;
+                    ALTER ROLE db_owner ADD MEMBER $newUser;";
+$createUserResult = sqlsrv_query($conn, $createUserQuery);
+
+if ($createUserResult === false) {
+    die("Error creating user: " . print_r(sqlsrv_errors(), true));
 }
 
-# Closes connection
-$conn->close();
+echo "User created successfully with all permissions.<br>";
 
+// Switch to the new database
+sqlsrv_close($conn);
+$connectionOptions["Database"] = $databaseName;
+$newConn = sqlsrv_connect($serverName, $connectionOptions);
 
-# Connects to mysql database
-$conn = new mysqli("localhost", $db_user, $db_pass, $db_name);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error . "<br />");
-}
-else {
-    echo "Connected successfully.<br />";
+if ($newConn === false) {
+    die("Connection to new database failed: " . print_r(sqlsrv_errors(), true));
 }
 
-# Runs a query to create a database
-$query_success = $conn->query("CREATE TABLE games (
-    pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    player_name VARCHAR(30) NOT NULL,
-    duration FLOAT(20, 3) NOT NULL,
-    number_of_turns INT(10) NOT NULL
-    )");
+// Create a new table
+$createTableQuery = "CREATE TABLE games (
+    id int IDENTITY (1,1) NOT NULL,
+    player_name VARCHAR(max) NOT NULL,
+    duration FLOAT NOT NULL,
+    number_of_turns INT NOT NULL,
+    CONSTRAINT PK_games_id PRIMARY KEY CLUSTERED (id)
+    )";
+$createTableResult = sqlsrv_query($newConn, $createTableQuery);
 
-if ($query_success) {
-    echo "Query successful.<br />";
-}
-else {
-    echo "Query failed. " . $conn->error . "<br />";
-}
-
-# Runs a query to create a database
-$query_success = $conn->query("CREATE TABLE players (
-    pkey INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    usernm VARCHAR(30) NOT NULL,
-    passwd VARCHAR(30) NOT NULL,
-    games_won INT(6) NOT NULL,
-    time_played FLOAT(20, 3) NOT NULL,
-    games_played INT(6) NOT NULL
-    )");
-
-if ($query_success) {
-    echo "Query successful.<br />";
-}
-else {
-    echo "Query failed. " . $conn->error . "<br />";
+if ($createTableResult === false) {
+    die("Error creating table: " . print_r(sqlsrv_errors(), true));
 }
 
-# Closes connection
-$conn->close();
+echo "Games table created successfully.<br>";
 
+// Create a new table
+$createTableQuery = "CREATE TABLE players (
+    id int IDENTITY (1,1) NOT NULL,
+    usernm VARCHAR(max) NOT NULL,
+    passwd VARCHAR(max) NOT NULL,
+    games_won INT NOT NULL,
+    time_played FLOAT NOT NULL,
+    games_played INT NOT NULL,
+    CONSTRAINT PK_players_id PRIMARY KEY CLUSTERED (id)
+    )";
+$createTableResult = sqlsrv_query($newConn, $createTableQuery);
+
+if ($createTableResult === false) {
+    die("Error creating table: " . print_r(sqlsrv_errors(), true));
+}
+
+echo "Player table created successfully.<br>";
+
+sqlsrv_close($newConn);
 ?>
