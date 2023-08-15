@@ -1,6 +1,6 @@
 <?php 
 
-require 'set_credentials.php';
+require 'set_conn_options.php';
 
 session_start();
 
@@ -26,22 +26,40 @@ else {
     die("No number of turns found.");
 }
 
-// boilerplate mysql api code
-$conn = new mysqli("localhost", $db_user, $db_pass, $db_name);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Connect to the SQL Server
+$conn = sqlsrv_connect($server_name, $conn_options);
+
+if ($conn === false) {
+    die("Connection failed.");
 }
 
-$query_success = $conn->query("INSERT INTO games (player_name, duration, number_of_turns) VALUES ('{$_SESSION['user']}', '${duration}', '${num_turns}')");
-if ($query_success) {
-    echo "Game submission successful.";
+// Submits game into games table
+$games_query = "INSERT INTO games (player_name, duration, number_of_turns) VALUES (?, ?, ?)";
+$games_params = array($_SESSION['user'], $duration, $num_turns);
+
+// Prepare the statement.
+if (!($games_stmt = sqlsrv_prepare($conn, $games_query, $games_params))) {
+    die("Save game failed.");
+}
+
+// Execute the statement.
+if (sqlsrv_execute($games_stmt)) {
+    echo "success";
 } else {
-    echo "Hmmm... something went wrong on our end. Sorry!";
-    echo $conn->error;
+    die("Save game failed.");
 }
 
-$result = $conn->query("SELECT * FROM players WHERE usernm='{$_SESSION['user']}'");
-if ($row = $result->fetch_assoc()) {
+// Gets session user to update their data
+$user_query = "SELECT * FROM players WHERE usernm = ?";
+$user_params = array($_SESSION['user']);
+
+$user_stmt = sqlsrv_query($conn, $user_query, $user_params);
+if( $user_stmt === false )
+{
+    die("Save game request failed.");
+}
+if ( $row = sqlsrv_fetch_array( $user_stmt, SQLSRV_FETCH_ASSOC) )
+{
     $total_time_played = $row["time_played"];
     $total_time_played += $duration;
 
@@ -53,17 +71,29 @@ if ($row = $result->fetch_assoc()) {
     $total_games_played++;
 }
 else {
-    echo "Player not found. Could not update player score.";
+    die("Save game request failed.");
 }
 
-$query_success = $conn->query("UPDATE players SET games_won={$total_games_won}, time_played={$total_time_played}, games_played={$total_games_played}  WHERE usernm='{$_SESSION['user']}'");
-if ($query_success) {
-    echo "Player profile successfully updated.";
+// Submits game into games table
+$players_query = "UPDATE players SET games_won = ?, time_played = ?, games_played = ? WHERE usernm = ?";
+$players_params = array($total_games_won, $total_time_played, $total_games_played, $_SESSION['user']);
+
+// Prepare the statement.
+if (!($players_stmt = sqlsrv_prepare($conn, $players_query, $players_params))) {
+    die("Save game failed.");
+}
+
+// Execute the statement.
+if (sqlsrv_execute($players_stmt)) {
+    echo "success";
 } else {
-    echo "Hmmm... something went wrong on our end. Sorry!";
-    echo $conn->error;
+    die("Save game failed.");
 }
 
-$conn->close();
+/* Free the statement and connection resources. */
+sqlsrv_free_stmt($games_stmt);
+sqlsrv_free_stmt($user_stmt);
+sqlsrv_free_stmt($players_stmt);
+sqlsrv_close($conn);
 
 ?>
